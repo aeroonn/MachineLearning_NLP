@@ -2,4 +2,4 @@ bertopic
 datasets
 sentence_transformers
 pandas
-sklearn
+scikit-learn
