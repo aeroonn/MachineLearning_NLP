@@ -17,7 +17,7 @@ def evaluate_bertopic_pmi(
     top_k_coherence: int = 5,
     top_k_diversity: int = 10,
     skip_outlier: bool = True,
-    is_baseline: bool = False,
+    tag: str = "Baseline",
 ):
 
     # 1) Extract topic -> list of topic words from BERTopic
@@ -115,8 +115,7 @@ def evaluate_bertopic_pmi(
 
     diversity = float(topic_diversity(new_keywords, k=top_k_diversity))
 
-    model_type = "Improved" if is_baseline else "Baseline"
-    print(f"{model_type} Model - NPMI: {mean_npmi:.4f}")
-    print(f"{model_type} Model - Diversity: {diversity:.4f}")
+    print(f"{tag} Model - NPMI: {mean_npmi:.4f}")
+    print(f"{tag} Model - Diversity: {diversity:.4f}")
 
     return coherence_df, mean_npmi, diversity
