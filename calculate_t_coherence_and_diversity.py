@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import itertools
 from math import log
 
+class TopicModelWrapper:
 
 def evaluate_bertopic_pmi(
     topic_model,
