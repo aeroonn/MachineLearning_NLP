@@ -5,6 +5,11 @@ import itertools
 from math import log
 
 class TopicModelWrapper:
+    def __init__(self, topics):
+        self.topics = topics
+
+    def get_topics(self):
+        return self.topics
 
 def evaluate_bertopic_pmi(
     topic_model,
@@ -12,6 +17,7 @@ def evaluate_bertopic_pmi(
     top_k_coherence: int = 5,
     top_k_diversity: int = 10,
     skip_outlier: bool = True,
+    tag: str = "Baseline",
 ):
 
     # 1) Extract topic -> list of topic words from BERTopic
@@ -108,5 +114,8 @@ def evaluate_bertopic_pmi(
         return len(unique_words) / total_words
 
     diversity = float(topic_diversity(new_keywords, k=top_k_diversity))
+
+    print(f"{tag} Model - NPMI: {mean_npmi:.4f}")
+    print(f"{tag} Model - Diversity: {diversity:.4f}")
 
     return coherence_df, mean_npmi, diversity
