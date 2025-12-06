@@ -2,3 +2,4 @@ bertopic
 datasets
 sentence_transformers
 pandas
+spacy
